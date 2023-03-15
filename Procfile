@@ -1,0 +1,1 @@
+web: gunicorn sights_api.wsgi
