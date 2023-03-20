@@ -7,7 +7,7 @@ from .serializers import CommentSerializer
 
 class CommentViewSet(ModelViewSet):
     """
-    Ver e editar comments
+    Ver e editar Comments
     """
 
     # A view conversa com o model. Todos os objetos são guardados na
