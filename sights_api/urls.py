@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
-from sights.api.viewsets import SightViewSet
+from sights.api.viewsets import SightViewSet, DocumentOfItentViewSet
 from attractions.api.viewsets import AttractionViewSet
 from adresses.api.viewsets import AdressViewSet
 from comments.api.viewsets import CommentViewSet
@@ -27,7 +27,9 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 
 router = routers.DefaultRouter()
-router.register(r'sights', SightViewSet, basename='Sight')
+router.register(r'sights', SightViewSet, basename='sight')
+router.register(r'documents-of-intent', DocumentOfItentViewSet,
+                basename='document-of-intent')
 router.register(r'attractions', AttractionViewSet)
 router.register(r'adresses', AdressViewSet)
 router.register(r'comments', CommentViewSet)

@@ -4,8 +4,13 @@ from rest_framework.decorators import action
 from rest_framework import filters
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.authentication import TokenAuthentication
-from sights.models import Sight
-from .serializers import SightSerializer
+from sights.models import Sight, DocumentOfIntent
+from .serializers import SightSerializer, DocumentOfIntentSerializer
+
+
+class DocumentOfItentViewSet(ModelViewSet):
+    serializer_class = DocumentOfIntentSerializer
+    queryset = DocumentOfIntent.objects.all()
 
 
 class SightViewSet(ModelViewSet):

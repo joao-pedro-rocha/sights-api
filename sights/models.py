@@ -5,6 +5,13 @@ from reviews.models import Review
 from adresses.models import Adress
 
 
+class DocumentOfIntent(models.Model):
+    description = models.CharField(verbose_name='Description', max_length=3000)
+
+    def __str__(self):
+        return f'{self.description[:50]}...'
+
+
 class Sight(models.Model):
     name = models.CharField(verbose_name='Name', max_length=150)
     description = models.TextField(verbose_name='Description')
@@ -13,11 +20,18 @@ class Sight(models.Model):
     attractions = models.ManyToManyField(Attraction, 
                                          verbose_name='Attractions')
     comments = models.ManyToManyField(Comment, verbose_name='Comments')
-    reveiews = models.ManyToManyField(Review, verbose_name='Review')
-    adress = models.ForeignKey(Adress, verbose_name='Review',
+    reviews = models.ManyToManyField(Review, verbose_name='Review')
+    adress = models.ForeignKey(Adress, verbose_name='Adress',
                                on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(verbose_name='Image', upload_to='sights',
                               null=True, blank=True)
+    document_of_intent = models.OneToOneField(
+        DocumentOfIntent,
+        verbose_name='Document of intent',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
     
     def __str__(self):
         return self.name
